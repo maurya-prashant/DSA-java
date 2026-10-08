@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/DSA.iml" filepath="$PROJECT_DIR$/DSA.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.kilo/worktrees/overjoyed-sternum/overjoyed-sternum.iml" filepath="$PROJECT_DIR$/.kilo/worktrees/overjoyed-sternum/overjoyed-sternum.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.kilo/worktrees/worktrees.iml" filepath="$PROJECT_DIR$/.kilo/worktrees/worktrees.iml" />
+    </modules>
+  </component>
+</project>

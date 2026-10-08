@@ -24,6 +24,7 @@ public class rotatedArray{
     }
 
 
+    // find the pivot
     static int search(int[] arr){
 
         int start =0;
