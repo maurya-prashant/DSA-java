@@ -59,12 +59,83 @@ public class mergeSort{
         return mix;
     }
 
+
+   //using auxiallary space
+   static void sort(int[] arr, int start, int end) {
+
+        // Base condition
+        if (start >= end) {
+            return;
+        }
+
+        int mid = start + (end - start) / 2;
+
+        // Sort left half
+        sort(arr, start, mid);
+
+        // Sort right half
+        sort(arr, mid + 1, end);
+
+        // Merge both halves
+        merge(arr, start, mid, end);
+    }
+
+    static void merge(int[] arr, int start, int mid, int end) {
+
+        int[] temp = new int[end - start + 1];
+
+        int i = start;
+        int j = mid + 1;
+        int k = 0;
+
+        // Compare both halves
+        while (i <= mid && j <= end) {
+
+            if (arr[i] <= arr[j]) {
+                temp[k] = arr[i];
+                i++;
+            } else {
+                temp[k] = arr[j];
+                j++;
+            }
+
+            k++;
+        }
+
+        // Remaining elements from left
+        while (i <= mid) {
+            temp[k] = arr[i];
+            i++;
+            k++;
+        }
+
+        // Remaining elements from right
+        while (j <= end) {
+            temp[k] = arr[j];
+            j++;
+            k++;
+        }
+
+        // Copy sorted elements back
+        for (int x = 0; x < temp.length; x++) {
+            arr[start + x] = temp[x];
+        }
+    }
     public static void main(String[] args) {
 
+        // int[] arr = {5, 3, 8, 1, 2, 7};
+
+        // int[] sorted = sort(arr);
+
+        // System.out.println(Arrays.toString(sorted));
+
+
+
+        //auxiliary 
         int[] arr = {5, 3, 8, 1, 2, 7};
 
-        int[] sorted = sort(arr);
+        sort(arr, 0, arr.length - 1);
 
-        System.out.println(Arrays.toString(sorted));
+        System.out.println(Arrays.toString(arr));
     }
 } 
