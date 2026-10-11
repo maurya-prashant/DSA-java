@@ -60,8 +60,8 @@ public class arrayQuestions {
         findAllIndex(arr, target, index+1);
     }
 
-    // 
-    static ArrayList findAllIndex(int[] arr, int target, int index, ArrayList<Integer> list){
+    // return arraylist
+    static ArrayList<Integer> findAllIndex(int[] arr, int target, int index, ArrayList<Integer> list){
         if(index==arr.length){
             return list;
         }
@@ -72,12 +72,54 @@ public class arrayQuestions {
     }
 
 
-    // return an arraylist
-    
+    //return the list without passing argument
+    // return type will be arraylist
+    static ArrayList<Integer> findAllIndex2(int[] arr, int target, int index){
+
+        ArrayList<Integer> list = new ArrayList<>();
+        if(index==arr.length){
+            return list;
+        }
+        //this will contain ans for that function call only
+
+        if(arr[index]==target){
+           list.add(index);
+        }
+        ArrayList<Integer> ansFromBelowCalls =  findAllIndex2(arr, target, index+1);
+
+        list.addAll(ansFromBelowCalls);
+        return list;
+    }
+
+    //rotated binary search using recursion
+    static int search(int[] arr, int target, int s, int e){
+        if(s>e){
+            return -1;
+        }
+        int m = s+(e-s)/2;
+        if(arr[m]==target){
+            return m;
+        }
+        if(arr[s]<=arr[m]){
+            if(target>=arr[s] && target <= arr[m]){
+                return search(arr, target, s, m-1);
+            }
+            else{
+                return search(arr, target, m+1, e);
+            }
+        }
+        if(target>=arr[m] && target<=arr[e]){
+            return search(arr, target, m+1, e);
+        }
+        return search(arr, target, s, m-1);
+    }
 
     void main() {
         
-        int[] arr = {1, 2, 3, 4, 5};
-        IO.println(SortedArr(arr, 0));
+        int[] arr = {2,3,1,4,4,5};
+        // IO.println(SortedArr(arr, 0));
+        
+        ArrayList<Integer> ans = findAllIndex(arr, 4, 0, new ArrayList<>());
+        IO.println(ans);
     }
 }
